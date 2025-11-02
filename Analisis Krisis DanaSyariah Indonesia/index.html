@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus DanaSyariah Indonesia: Di Balik Ilusi Aman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Latar belakang slate-100 yang lebih modern */
+        }
+        
+        /* Efek kedalaman yang lebih kuat */
+        .content-card {
+            background-color: white;
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e2e8f0; /* slate-200 */
+        }
+        .content-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* Efek shadow-2xl */
+        }
+
+        /* Kustomisasi Accordion yang lebih elegan */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.25rem 1.5rem; /* p-5 */
+            border-bottom: 1px solid #f1f5f9;
+            transition: background-color 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details > summary:hover {
+            background-color: #f8fafc; /* slate-50 */
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary .icon {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            stroke-width: 2.5;
+        }
+        details[open] > summary .icon {
+            transform: rotate(90deg);
+        }
+        details > div.accordion-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem; /* px-6 pb-6 pt-4 */
+        }
+        
+        /* Styling untuk Navigasi Atas yang aktif (Scroll-spy) */
+        .nav-link {
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            border-bottom-color: #0d9488; /* teal-600 */
+            color: #0f766e; /* teal-700 */
+        }
+
+        /* Image styling dengan kedalaman */
+        .header-image, .inline-image {
+            border-radius: 0.5rem; /* 8px */
+            box-shadow: 0 10px 20px -5px rgb(0 0 0 / 0.15);
+        }
+        
+        /* Menggunakan Tailwind Prose untuk merapikan teks verbatim dari PDF */
+        .prose-custom {
+            color: #334155; /* slate-700 */
+        }
+        .prose-custom h2 {
+            color: #0f766e; /* teal-700 */
+            font-weight: 700;
+            margin-bottom: 1em;
+            padding-bottom: 0.25em;
+            border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        }
+        .prose-custom h3 {
+            color: #1e293b; /* slate-800 */
+            font-weight: 600;
+            margin-top: 1.5em;
+        }
+        .prose-custom p {
+            line-height: 1.7;
+            margin-bottom: 1.25em;
+        }
+        .prose-custom ul {
+            list-style-type: disc;
+            padding-left: 1.5em;
+            margin-bottom: 1.25em;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5em;
+        }
+        .prose-custom strong {
+            color: #000;
+        }
+    </style>
+    
+    <!-- Script Proteksi Konten -->
+    <script>
+        // Menonaktifkan klik kanan
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Menonaktifkan shortcut untuk melihat source code dan dev tools
+        document.addEventListener('keydown', event => {
+            if (
+                event.key === 'F12' || // F12 (Dev Tools)
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j')) || // Ctrl+Shift+I/J
+                (event.ctrlKey && (event.key === 'U' || event.key === 'u' || event.key === 'S' || event.key === 's')) // Ctrl+U (View Source), Ctrl+S (Save)
+            ) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body class="text-slate-700" ondragstart="return false;" ondrop="return false;">
+
+    <!-- 1. HEADER / NAVIGASI BARU (Modern, Sticky, Canggih) -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg shadow-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Judul -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-bold text-xl text-teal-700">Studi Kasus DanaSyariah Indonesia</span>
+                </div>
+                
+                <!-- Navigasi Desktop -->
+                <div class="hidden md:flex md:space-x-8">
+                    <a href="#hook" class="nav-link text-slate-600 font-medium px-1 py-4 text-sm active">Pembuka</a>
+                    <a href="#relevansi" class="nav-link text-slate-600 font-medium px-1 py-4 text-sm">Relevansi</a>
+                    <a href="#penjelasan" class="nav-link text-slate-600 font-medium px-1 py-4 text-sm">Penjelasan Inti</a>
+                    <a href="#kronologi" class="nav-link text-slate-600 font-medium px-1 py-4 text-sm">Kronologi</a>
+                    <a href="#refleksi" class="nav-link text-slate-600 font-medium px-1 py-4 text-sm">Refleksi</a>
+                </div>
+
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                        <span class="sr-only">Buka menu</span>
+                        <!-- Ikon Hamburger (saat tertutup) -->
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Ikon X (saat terbuka) -->
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hook" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-700">Pembuka</a>
+                <a href="#relevansi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-700">Relevansi</a>
+                <a href="#penjelasan" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-700">Penjelasan Inti</a>
+                <a href="#kronologi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-700">Kronologi</a>
+                <a href="#refleksi" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-700">Refleksi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION / HEADER (Naratif & Inspiratif) -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
+                 alt="Fintech analysis background" 
+                 class="w-full h-full object-cover header-image"
+                 onerror="this.src='https://placehold.co/1740x800/e0f2f1/0d9488?text=Gagal+Memuat+Gambar'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-100 via-white/70 to-white/30"></div>
+        </div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 md:pt-32 md:pb-24 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                Aman, Syariah, Untung 18%...
+                <span class="block text-teal-700">Sampai Semuanya Runtuh.</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-slate-700 font-medium">
+                Sebuah pelajaran mahal tentang kepercayaan, risiko tersembunyi, dan ilusi 'keamanan' di era fintech. Mari kita bedah bersama.
+            </p>
+        </div>
+    </header>
+
+    <!-- 3. MAIN CONTENT (Story-telling layout) -->
+    <main class="max-w-4xl mx-auto p-4 md:p-8 space-y-10 md:space-y-12 -mt-16 md:-mt-24">
+        
+        <!-- Kartu Perkenalan (Tone Ramah) -->
+        <div class="content-card p-6 md:p-8 text-center">
+            <h2 class="text-2xl font-bold text-teal-700 mb-3">Selamat Datang di Analisis Interaktif Ini!</h2>
+            <p class="text-base md:text-lg text-slate-600">
+                Kita akan memulai sebuah perjalanan untuk memahami apa yang sebenarnya terjadi di balik layar PT Dana Syariah Indonesia (DSI). Ini bukan sekadar laporan, tapi sebuah cerita tentang inovasi, kepercayaan, dan apa yang bisa kita pelajari saat semuanya tidak berjalan sesuai rencana.
+            </p>
+        </div>
+
+        <!-- Bagian 1: Pembuka (Verbatim) -->
+        <section id="hook" class="content-card p-6 md:p-8 prose prose-custom max-w-none">
+            <h2>Bagian 1: Sempurna, Terlalu Sempurna</h2>
+            <p>Bayangkan Anda menemukan sebuah aplikasi fintech di ponsel Anda. Aplikasinya terlihat bersih, profesional, dan legal. Ini bukan aplikasi pinjol ilegal yang bersembunyi di kegelapan; platform ini, PT Dana Syariah Indonesia (DSI), secara bangga menampilkan izin penuh dari Otoritas Jasa Keuangan (OJK) dengan nomor KEP-10/D.05/2021.</p>
+            <p>Lebih dari itu, aplikasi ini berlabel "syariah". Artinya, seluruh operasionalnya diawasi oleh Dewan Pengawas Syariah (DPS) yang telah mendapatkan rekomendasi langsung dari Dewan Syariah Nasional Majelis Ulama Indonesia (DSN-MUI). Bagi banyak dari kita, dua stempel ini-OJK dan DSN-MUI-adalah jaminan keamanan tertinggi.</p>
+            <p>Lalu, Anda melihat penawaran investasinya: pendanaan untuk proyek-proyek properti. Imbal hasil yang ditawarkan sangat menggiurkan, setara dengan "Hingga 18%" per tahun. Dan inilah bagian terbaiknya: untuk produk dengan imbal hasil setinggi itu, DSI dengan berani menulis deskripsi risiko: "Pembiayaan ini aman".¹</p>
+            <p>Legal, syariah, untung tinggi, dan aman. Kedengarannya sempurna, bukan?</p>
+            <h3 class="text-3xl font-bold text-center text-slate-800 my-8 italic">Terlalu sempurna.</h3>
+            <p>Pada Oktober 2025, kesempurnaan itu retak. Ribuan pemberi dana (disebut lender) yang menaruh uang mereka di platform tersebut tiba-tiba tidak bisa menarik dana mereka yang sudah jatuh tempo. Pembayaran imbal hasil bulanan yang dijanjikan berhenti mengalir. Mimpi investasi aman berubah menjadi mimpi buruk publik yang kacau, memicu kepanikan investor, liputan media nasional, dan akhirnya intervensi regulator.¹</p>
+            <p>Apa yang sebenarnya terjadi? Bagaimana sebuah benteng yang tampak begitu kokoh-dijaga oleh OJK dan diawasi oleh dewan ulama-bisa runtuh dari dalam?</p>
+            <p>Jawabannya tersembunyi bukan pada apa yang mereka tunjukkan di halaman depan aplikasi, tetapi pada apa yang mereka sembunyikan di balik kerumitan akad hukum, model bisnis yang cacat desain, dan komunikasi pemasaran yang secara matematis menyesatkan.</p>
+        </section>
+
+        <!-- Bagian 2: Relevansi (Verbatim) -->
+        <section id="relevansi" class="content-card p-6 md:p-8 prose prose-custom max-w-none">
+            <h2>Bagian 2: "Mengapa Kisah Ini Penting bagi Anda?"</h2>
+            <p>Kita hidup di era disrupsi fintech. Setiap hari, kita didorong untuk "pintar finansial", mengambil alih kendali keuangan kita, dan berinvestasi melalui aplikasi yang menjanjikan kemudahan dan keuntungan. Kita tidak lagi pasif menabung di bank; kita aktif "mendanai" dan "berinvestasi".</p>
+            <p>Kisah DSI bukanlah sekadar berita tentang satu perusahaan yang gagal. Ini adalah studi kasus kritis tentang apa yang terjadi ketika transparansi gagal mengimbangi kecepatan inovasi.</p>
+            <p>Bagi kita, terutama audiens dewasa muda non-teknis, kasus ini sangat relevan. Ini adalah ujian terbesar bagi seluruh ekosistem fintech syariah di Indonesia. la memaksa kita bertanya: Apakah label "syariah" yang selama ini kita percayai benar-benar memberikan lapisan perlindungan dan etika yang lebih baik? Ataukah itu hanya lapisan pemasaran-gimmick-yang meninabobokan kita dari risiko yang sebenarnya?.</p>
+            <p>Ketika Anda menaruh dana Anda di platform Peer-to-Peer (P2P) lending, siapa yang sebenarnya menanggung risiko jika terjadi gagal bayar? Petunjuknya: itu bukan platformnya. Itu adalah Anda.</p>
+        </section>
+
+        <!-- Bagian 3: Penjelasan Inti (Accordion Interaktif) -->
+        <section id="penjelasan" class="content-card overflow-hidden p-6 md:p-8">
+            <div class="prose prose-custom max-w-none">
+                <h2>Bagian 3: "Membongkar Mesin Penggerak DSI"</h2>
+                <p>Untuk memahami keruntuhan ini, kita perlu membedah mesin DSI lapisan demi lapisan. Kita akan melihat tiga hal: struktur hukumnya (akad), model bisnisnya (cara DSI menghasilkan uang), dan komunikasi pemasarannya (cara DSI "menjual" produknya).</p>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                 alt="Analisis dokumen legal"
+                 class="w-full h-auto object-cover my-6 inline-image"
+                 onerror="this.src='https://placehold.co/1740x400/e0f2f1/0d9488?text=Analisis+Akad'">
+
+            <!-- Accordion Wrapper -->
+            <div class="border border-slate-200 rounded-lg overflow-hidden mt-6">
+                <!-- Accordion 3.1 -->
+                <details>
+                    <summary>
+                        <span class="font-semibold text-lg text-slate-800">3.1: Permainan Dua Akad: "Mandor Proyek" Anda</span>
+                        <svg class="icon text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </summary>
+                    <div class="accordion-content prose prose-custom max-w-none border-t border-slate-100">
+                        <p>Lapisan pertama adalah hukum. Saat Anda menaruh uang di DSI, Anda tidak sedang "menabung" atau "mendepositokan" uang. Relasi Anda dengan DSI diikat oleh sebuah perjanjian legal bernama "PERJANJIAN WAKALAH BIL UJRAH".</p>
+                        <p><strong>Analogi sederhana:</strong> Bayangkan Anda punya uang dan ingin berinvestasi di proyek konstruksi properti, tapi Anda tidak punya waktu, keahlian, atau jaringan untuk melakukannya sendiri. Anda kemudian menyewa DSI untuk menjadi "Mandor Proyek" Anda.</p>
+                        <ul>
+                            <li>Dalam istilah syariah, Anda adalah <strong>Muwakkil</strong> (pemberi kuasa), dan DSI adalah <strong>Wakil</strong> (pihak yang diberi kuasa). Akad pemberian kuasa ini disebut <strong>Wakalah</strong>.</li>
+                            <li>Tentu saja, DSI tidak bekerja gratis. Untuk jasanya sebagai "Mandor", Anda setuju membayar DSI sebuah fee di depan. Fee ini disebut <strong>Ujrah</strong>. Itulah mengapa nama akadnya menjadi <strong>Wakalah Bil Ujrah</strong>.</li>
+                        </ul>
+                        <p>Selanjutnya, DSI (Mandor Anda) mengambil uang Anda dan bertransaksi dengan <strong>borrower</strong> (pengembang properti). Di sinilah letak perbedaan krusial: DSI tidak meminjamkan uang Anda (itu akan menjadi riba). Sebaliknya, DSI menggunakan skema <strong>Murabahah</strong> (jual beli).</p>
+                        <p><strong>Contoh:</strong> Si Kontraktor butuh semen dan baja senilai Rp 1 miliar. DSI (Mandor Anda), bertindak atas nama Anda, membeli semen dan baja itu, lalu menjualnya kembali ke Kontraktor dengan harga, katakanlah, Rp 1,2 miliar, yang dibayar secara cicilan selama 12 bulan. Margin Rp 200 juta itulah yang menjadi "imbal hasil" Anda.</p>
+                        <h3 class="text-red-700">Cacat Desain yang Fatal</h3>
+                        <p>Di Pasal 4, Poin (10)b, disebutkan bahwa Ujrah (bayaran untuk si "Mandor") dibayarkan "1 (satu) kali setelah tanggal proyek dimulai".¹</p>
+                        <p>Ini berarti, DSI sebagai "Mandor" Anda menerima <strong>100% bayarannya di Bulan ke-1</strong>, sementara Anda, sang investor, harus menanggung seluruh risiko proyek selama 8 bulan ke depan.</p>
+                        <p>Insentif DSI secara fundamental bergeser. Alih-alih "memastikan proyek sukses dan Anda dibayar lunas", insentif mereka berubah menjadi "memulai proyek sebanyak mungkin, secepat mungkin" untuk mengumpulkan fee sebanyak-banyaknya.</p>
+                    </div>
+                </details>
+                <!-- Accordion 3.2 -->
+                <details>
+                    <summary>
+                        <span class="font-semibold text-lg text-slate-800">3.2: Paradoks Laba Rp 24 Miliar: Risiko "Off-Balance Sheet"</span>
+                        <svg class="icon text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </summary>
+                    <div class="accordion-content prose prose-custom max-w-none border-t border-slate-100">
+                        <p>Jika Anda melihat Laporan Keuangan DSI untuk tahun 2024, Anda akan terkesan. Perusahaan ini tampak sangat sehat. Mereka mencatatkan total Pendapatan sebesar <strong>Rp 92,23 miliar</strong> dan membukukan Laba Komprehensif Tahun Berjalan sebesar <strong>Rp 24,01 miliar</strong>.¹</p>
+                        <p>Bagaimana mungkin sebuah perusahaan yang begitu profitabel bisa tiba-tiba gagal bayar?</p>
+                        <p>Jawabannya adalah sebuah konsep keuangan yang disebut <strong>Risiko "Off-Balance Sheet"</strong> (Risiko di Luar Neraca Keuangan).</p>
+                        <p><strong>Analogi Ransel:</strong> Bayangkan neraca keuangan DSI adalah ransel yang mereka bawa. Setiap kali sebuah proyek dimulai, DSI memasukkan fee (Ujrah) mereka ke dalam ransel itu. Itulah "Pendapatan" Rp 92,23 miliar yang mereka catat.</p>
+                        <p>Tapi, bagaimana dengan risiko bahwa Kontraktor (Borrower) akan gagal bayar? Risiko itu ibarat batu seberat 100 kg. DSI tidak memasukkan batu itu ke ransel mereka. Sebaliknya, mereka menyerahkan batu itu untuk Anda pikul.</p>
+                        <p>Risiko gagal bayar itu <strong>100% ditanggung oleh Anda</strong>, sang lender. Risiko itu "off-balance sheet"—tidak tercatat di neraca DSI.</p>
+                        <p>Laba Rp 24 miliar di 2024 itu adalah akselerator krisis. Untuk bisa mencetak laba sebesar itu, DSI (yang insentifnya adalah fee di depan) harus menyalurkan volume pendanaan yang luar biasa besar. Dan cara tercepat untuk menyalurkan volume besar adalah dengan melonggarkan standar underwriting—alias, tidak terlalu ketat dalam menilai kelayakan kredit si Kontraktor.</p>
+                    </div>
+                </details>
+                <!-- Accordion 3.3 -->
+                <details>
+                    <summary>
+                        <span class="font-semibold text-lg text-slate-800">3.3: Jebakan "Aman" 100%: Kontradiksi Inti yang Fatal</span>
+                        <svg class="icon text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </summary>
+                    <div class="accordion-content prose prose-custom max-w-none border-t border-slate-100">
+                        <p>Inilah lapisan ketiga, "barang bukti" dari kasus ini. DSI mengklasifikasikan risiko pendanaannya ke dalam beberapa tingkat. Mari kita fokus pada satu tingkat yang paling fatal: <strong>Tingkat Risiko C</strong>.¹</p>
+                        <ul>
+                            <li><strong>Deskripsi Risiko dari DSI:</strong> "Pembiayaan ini aman"</li>
+                            <li><strong>Imbal Hasil Kompetitif:</strong> "Hingga 18%" (setara per tahun)</li>
+                            <li><strong>SCR Minimum:</strong> "100%"</li>
+                        </ul>
+                        <p>Istilah teknisnya adalah <strong>Security Coverage Ratio (SCR)</strong>. Mari kita jelaskan dengan analogi "Jaring Pengaman". SCR adalah rasio perbandingan antara nilai agunan (jaminan, misalnya tanah milik Kontraktor) dengan nilai utang.</p>
+                        <ul>
+                            <li><strong>Jika SCR 125%:</strong> Utang Rp 1 miliar dijamin oleh tanah senilai Rp 1,25 miliar. Ada "bantalan" pengaman setebal Rp 250 juta.</li>
+                            <li><strong>Jika SCR 100%:</strong> Utang Rp 1 miliar dijamin oleh tanah senilai... tepat Rp 1 miliar. Bantalannya setebal NOL.</li>
+                        </ul>
+                        <h3 class="text-red-700">Kebohongan Matematis</h3>
+                        <p>Bayangkan skenario terburuk: Kontraktor gagal bayar. Anda (melalui DSI) terpaksa menyita tanah jaminan senilai Rp 1 miliar itu.</p>
+                        <p>Apakah menjual tanah sitaan itu gratis? Tentu tidak. Anda harus membayar biaya notaris, biaya lelang, pajak penjualan, dan biaya pengacara (bisa 5% - 15%). Lalu, apakah tanah yang dijual lelang (jual paksa) harganya akan sama dengan harga pasar wajar? Tentu tidak. Harganya pasti di bawah pasar.</p>
+                        <p>Jadi: <strong>(Nilai Agunan Rp 1 Miliar) - (Diskon Jual Cepat) - (Biaya Lelang, Pajak, Notaris) = Hasil Bersih yang Anda Terima.</strong></p>
+                        <p>Hasil bersihnya pasti akan jauh di bawah Rp 1 miliar. Ini berarti, dengan SCR 100%, jika terjadi gagal bayar, Anda <strong>dijamin akan kehilangan sebagian dari dana pokok Anda</strong>.</p>
+                        <p>Melabeli sebuah skenario yang memiliki jaminan kerugian pokok sebagai "aman" bukanlah optimisme. Itu adalah praktik <strong>mis-selling (penjualan yang menyesatkan)</strong> yang fatal.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Bagian 4: Kronologi (Verbatim) -->
+        <section id="kronologi" class="content-card p-6 md:p-8">
+            <div class="prose prose-custom max-w-none">
+                <h2>Bagian 4: Data Pendukung - Kronologi Keruntuhan dalam 4 Bulan</h2>
+                <p>Bagaimana tumpukan risiko teoretis ini meledak di dunia nyata? Krisis ini tidak terjadi dalam semalam. Itu adalah api kecil yang dibiarkan membesar.</p>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1542736703-f10094901cb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                 alt="Domino effect"
+                 class="w-full h-auto object-cover my-6 inline-image"
+                 onerror="this.src='https://placehold.co/1740x400/e0f2f1/0d9488?text=Kronologi+Keruntuhan'">
+            
+            <!-- Timeline (Modern) -->
+            <div class="mt-8 flow-root">
+                <ul class="-mb-8">
+                    <!-- Fase 1 -->
+                    <li>
+                        <div class="relative pb-8">
+                            <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-slate-200" aria-hidden="true"></span>
+                            <div class="relative flex space-x-3">
+                                <div>
+                                    <span class="h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center ring-8 ring-white">
+                                        <svg class="h-5 w-5 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </span>
+                                </div>
+                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                    <div>
+                                        <p class="text-sm text-slate-500">Juni - Sep 2025</p>
+                                        <h3 class="font-semibold text-slate-800">Fase 1: Asap Mulai Terlihat</h3>
+                                        <p class="mt-2 text-slate-600">"Asap" pertama kali muncul di ulasan aplikasi. Polanya konsisten: kesulitan melakukan penarikan dana (WD) yang telah jatuh tempo dan keterlambatan pembayaran imbal hasil. Seorang pengguna melaporkan permintaan WD sejak Juni 2025 belum juga cair hingga Oktober.¹</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Fase 2 -->
+                    <li>
+                        <div class="relative pb-8">
+                            <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-slate-200" aria-hidden="true"></span>
+                            <div class="relative flex space-x-3">
+                                <div>
+                                    <span class="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center ring-8 ring-white">
+                                        <svg class="h-5 w-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    </span>
+                                </div>
+                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                    <div>
+                                        <p class="text-sm text-slate-500">6 - 10 Okt 2025</p>
+                                        <h3 class="font-semibold text-slate-800">Fase 2: Respons Defensif</h3>
+                                        <p class="mt-2 text-slate-600">Ketika tekanan publik memanas, DSI mengumumkan "penyesuaian sementara layanan operasional" dan menutup layanan kunjungan langsung ke kantor.¹ Alih-alih transparan, respons "menutup pintu" ini menghancurkan sisa kepercayaan dan memicu kepanikan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Fase 3 -->
+                    <li>
+                        <div class="relative">
+                            <div class="relative flex space-x-3">
+                                <div>
+                                    <span class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center ring-8 ring-white">
+                                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                                    </span>
+                                </div>
+                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                    <div>
+                                        <p class="text-sm text-slate-500">9 - 10 Okt 2025</p>
+                                        <h3 class="font-semibold text-slate-800">Fase 3: Intervensi Regulator</h3>
+                                        <p class="mt-2 text-slate-600">Api akhirnya cukup besar. OJK secara resmi memanggil pengurus DSI dan menyatakan platform tersebut berada dalam "pengawasan ketat".¹ Media keuangan nasional serempak memberitakan krisis ini, mengubahnya dari masalah forum investor menjadi isu nasional.¹</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tabel 1 (Verbatim) -->
+            <div class="prose prose-custom max-w-none mt-12">
+                <h3>Tabel 1: Kontradiksi Pemasaran vs. Realitas Risiko</h3>
+                <p>Untuk melihat kontradiksi ini dengan jelas, mari kita lihat data pemasaran DSI itu sendiri yang disandingkan dengan realitasnya.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse border border-slate-300">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-3 border border-slate-300 font-semibold">Parameter</th>
+                                <th class="p-3 border border-slate-300 font-semibold">Klaim Pemasaran DSI (Tingkat Risiko C)</th>
+                                <th class="p-3 border border-slate-300 font-semibold">Realitas Risiko (berdasar analisis)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-slate-300 font-medium">Deskripsi Risiko</td>
+                                <td class="p-3 border border-slate-300">"Pembiayaan ini aman"</td>
+                                <td class="p-3 border border-slate-300">Sangat berisiko, menyesatkan (mis-selling)</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="p-3 border border-slate-300 font-medium">Imbal Hasil</td>
+                                <td class="p-3 border border-slate-300">"Hingga 18%" (per tahun)</td>
+                                <td class="p-3 border border-slate-300">Imbal hasil tinggi yang mencerminkan risiko tinggi, bukan keamanan</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-3 border border-slate-300 font-medium">SCR Minimum</td>
+                                <td class="p-3 border border-slate-300">"100%"</td>
+                                <td class="p-3 border border-slate-300">Bantalan pengaman NOL. Tidak ada ruang untuk biaya likuidasi/penjualan paksa.</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="p-3 border border-slate-300 font-medium">Hasil jika Gagal Bayar</td>
+                                <td class="p-3 border border-slate-300">(Tidak disebutkan, tersirat "aman")</td>
+                                <td class="p-3 border border-slate-300 text-red-700 font-semibold">Dijamin kehilangan sebagian dana pokok</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm italic text-slate-500 mt-2">Sumber: Diolah dari Laporan Analisis Krisis PT Dana Syariah Indonesia.¹</p>
+            </div>
+
+        </section>
+
+        <!-- Bagian 5: Refleksi (Verbatim) -->
+        <section id="refleksi" class="content-card p-6 md:p-8">
+            <div class="prose prose-custom max-w-none">
+                <h2>Bagian 5: Penutup & Refleksi - Pelajaran Mahal tentang "Amanah"</h2>
+                
+                <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                     alt="Pelajaran dan refleksi"
+                     class="w-full h-auto object-cover my-6 inline-image"
+                     onerror="this.src='https://placehold.co/1740x400/e0f2f1/0d9488?text=Refleksi+Bersama'">
+
+                <p>Krisis Dana Syariah Indonesia bukanlah sebuah kecelakaan. la adalah hasil yang tak terhindarkan dari perpaduan tiga racun:</p>
+                <ol class="list-decimal pl-5">
+                    <li><strong>Risiko Konsentrasi:</strong> Memfokuskan hampir seluruh portofolio pada satu sektor yang siklikal, yaitu properti.</li>
+                    <li><strong>Insentif Beracun:</strong> Model Wakalah dengan fee dibayar 100% di depan, yang mendorong pengejaran volume di atas kualitas.¹</li>
+                    <li><strong>Deception (Penipuan):</strong> Komunikasi risiko yang sangat menyesatkan, melabeli produk berisiko tinggi sebagai "aman".¹</li>
+                </ol>
+                <p>Namun, pelajaran terbesar dari kisah ini jauh lebih dalam. Ini adalah tentang kegagalan tata kelola syariah.</p>
+                <p>Kita harus bertanya: <strong>Di mana Dewan Pengawas Syariah (DPS) ketika semua ini terjadi?</strong>¹ Prinsip utama dalam transaksi syariah (muamalah) bukan hanya "bebas riba". Prinsip utamanya adalah <strong>Amanah</strong> (kepercayaan), <strong>La Ghoror</strong> (tidak ada ketidakjelasan/tipu muslihat), dan <strong>La Dharar</strong> (tidak membahayakan).</p>
+                <p>Tindakan DSI melabeli produk SCR 100% sebagai "aman" adalah pelanggaran berat dan terang-terangan terhadap prinsip Amanah dan Ghoror. Itu adalah penipuan yang jelas, yang menempatkan dana nasabah dalam bahaya.</p>
+                <p>DPS kemungkinan besar telah melakukan tugas mereka untuk memastikan dokumen akad (seperti Perjanjian di¹) sudah sah dan bebas riba di atas kertas. Tetapi mereka tampaknya gagal total dalam mengawasi praktik bisnis dan etika operasional perusahaan.</p>
+                <p>Label "syariah" akhirnya hanya berfungsi sebagai stempel di atas kertas, menciptakan "titik buta" (blind spot) yang memberi rasa aman palsu kepada investor, padahal praktik bisnisnya sama berbahayanya (atau bahkan lebih) dari fintech konvensional.</p>
+                
+                <!-- Kotak Pelajaran (Inspiratif) -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-900 p-6 rounded-r-lg my-6 not-prose">
+                    <h4 class="font-bold text-lg mb-2">Pelajaran Terpenting Untuk Kita</h4>
+                    <p class="text-blue-800">Bagi kita, para "Dewasa Muda" yang sedang menavigasi lanskap fintech, pelajaran dari DSI sangat jelas: <strong>"Izin OJK" dan "Label Syariah" adalah titik awal, bukan garis akhir</strong> dari due diligence (uji tuntas) kita.</p>
+                    <p class="mt-3 text-blue-800">Label "syariah" seharusnya berarti lebih dari sekadar akad yang bebas bunga. la harus berarti transparansi radikal, etika yang lebih tinggi, dan amanah yang sesungguhnya. Krisis ini adalah panggilan bagi industri dan regulator untuk membuktikan bahwa "amanah" bukan sekadar kata dalam kontrak¹, tapi sebuah aksi nyata dalam praktik.</p>
+                    <p class="mt-4 font-semibold text-blue-900">Pada akhirnya, investor terbaik adalah investor yang skeptis dan teredukasi. Jangan pernah serahkan "amanah" uang Anda sepenuhnya pada sebuah aplikasi. Pahami apa yang Anda danai. Dan selalu ingat: Jika sesuatu terdengar terlalu bagus untuk menjadi kenyataan—seperti 'aman' dengan imbal hasil 18%—kemungkinan besar memang begitu.</p>
+                </div>
+
+                <!-- Karya yang dikutip dihapus -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. FOOTER -->
+    <footer class="mt-16 pb-8 text-center">
+        <!-- Konten footer dihapus sesuai permintaan -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            menuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                iconOpen.classList.toggle('hidden', !isOpen);
+                iconClose.classList.toggle('hidden', isOpen);
+            });
+
+            // Tutup menu mobile saat link di-klik
+            document.querySelectorAll('.nav-link-mobile').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                });
+            });
+
+            // --- Scroll-spy untuk Navigasi ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            const updateActiveLink = () => {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - navHeight - 50) { // 50px offset
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Jalankan sekali saat memuat
+        });
+    </script>
+</body>
+</html>
+
