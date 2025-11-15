@@ -12,31 +12,33 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>    
-    <!-- Konfigurasi Tailwind untuk LIGHT MODE Baru -->
+    <!--
+      Konfigurasi Tailwind untuk LIGHT MODE.
+      Palet warna baru yang lebih segar, profesional, dan modern.
+    -->
     <script>
         tailwind.config = {
-            // Hapus darkMode: 'class'
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // Palet Light Mode Baru (Corporate Property Theme)
-                        'brand-bg': '#f8fafc',       // bg-slate-50 (Latar belakang utama)
-                        'brand-surface': '#ffffff',    // bg-white (Latar belakang kartu)
-                        'brand-border': '#e2e8f0',   // bg-slate-200 (Garis batas)
-                        'brand-text': '#1e293b',     // text-slate-800 (Teks utama)
-                        'brand-text-dim': '#475569', // text-slate-600 (Teks sekunder)
-                        'brand-accent': '#4f46e5',   // text-indigo-600 (Aksen utama)
-                        'brand-accent-dark': '#4338ca', // text-indigo-700 (Aksen saat hover)
+                        // Palet Light Mode Baru (Corporate & Clean)
+                        'brand-bg': '#f7faff',       // Latar belakang utama (sangat terang, sedikit biru)
+                        'brand-surface': '#ffffff',    // Latar belakang kartu (putih bersih)
+                        'brand-border': '#e5e7eb',   // Garis batas (abu-abu netral)
+                        'brand-text': '#111827',     // Teks utama (hitam pekat)
+                        'brand-text-dim': '#4b5563', // Teks sekunder (abu-abu tua)
+                        'brand-primary': '#4f46e5',   // Aksen utama (Indigo)
+                        'brand-primary-dark': '#4338ca', // Aksen saat hover
+                        'brand-primary-light': '#eef2ff', // Latar belakang aksen (untuk nav aktif)
                     },
                     boxShadow: {
-                        // Shadow 'glow' yang disesuaikan untuk light mode
-                        'accent-glow': '0 10px 20px -5px rgba(79, 70, 229, 0.1), 0 4px 6px -2px rgba(79, 70, 229, 0.05)',
-                        'accent-glow-lg': '0 20px 25px -5px rgba(79, 70, 229, 0.15), 0 10px 10px -5px rgba(79, 70, 229, 0.1)',
+                        // Shadow yang lebih dalam dan modern
+                        'card-depth': '0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.05)',
+                        'card-depth-hover': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.07)',
                     },
-                    // Animasi tetap sama
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
                         'slide-up': 'slideUp 0.5s ease-out forwards',
@@ -57,73 +59,69 @@
     </script>
     
     <style>
-        /* Mengatur default ke light mode */
-        :root {
-            color-scheme: light;
-        }
-        
-        html {
-            overflow-y: scroll;
-        }
-
+        /* Standar Latar Belakang */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* brand-bg */
-            color: #1e293b; /* brand-text */
+            background-color: #f7faff; /* brand-bg */
+            color: #111827; /* brand-text */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* * MODIFIKASI: STYLING NAVIGASI BARU (DESKTOP SIDEBAR)
-         * Ini adalah style untuk link di sidebar kiri.
+        /* LAYOUT BARU: Styling Navigasi Kiri (Desktop)
+          Memberikan "kedalaman" dengan border dan background aktif.
         */
         .sidebar-nav-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem; /* 12px 16px */
-            border-radius: 0.5rem; /* 8px */
-            font-size: 0.875rem; /* 14px */
+            display: block;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
             font-weight: 500;
-            color: #475569; /* brand-text-dim */
+            color: #4b5563; /* brand-text-dim */
             transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
         }
         .sidebar-nav-link:hover {
-            background-color: #f1f5f9; /* slate-100 */
-            color: #1e293b; /* brand-text */
+            background-color: #f9fafb; /* gray-50 */
+            color: #111827; /* brand-text */
         }
+        /* Status Aktif untuk Scroll-spy */
         .sidebar-nav-link.active {
-            background-color: #eef2ff; /* indigo-50 */
-            color: #4f46e5; /* brand-accent */
+            background-color: #eef2ff; /* brand-primary-light */
+            color: #4f46e5; /* brand-primary */
             font-weight: 600;
+            border-left-color: #4f46e5; /* brand-primary */
         }
-        
-        /* * MODIFIKASI: EFEK KEDALAMAN KARTU KONTEN
-         * Tetap menggunakan shadow, bukan border.
+
+        /* LAYOUT BARU: Styling Kartu Konten
+          Memberikan "kedalaman" (depth) yang lebih kuat.
         */
         .content-card {
             background-color: #ffffff; /* brand-surface */
             border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.05), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb; /* brand-border */
+            box-shadow: var(--tw-shadow-card-depth);
             transition: all 0.3s ease-in-out;
         }
         .content-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.1), 0 8px 16px -8px rgba(0, 0, 0, 0.07);
+            box-shadow: var(--tw-shadow-card-depth-hover);
         }
 
-        /* Kustomisasi Prosa (Teks Artikel) - Light Mode */
+        /* Styling Prosa (Teks Artikel) - Dipertahankan dari file asli
+          Disesuaikan dengan palet warna baru.
+        */
         .prose-custom {
-            color: #1e293b; /* brand-text */
+            color: #111827; /* brand-text */
         }
         .prose-custom h2 {
-            color: #4f46e5; /* brand-accent */
+            color: #4f46e5; /* brand-primary */
             font-weight: 800;
             margin-bottom: 1em;
             padding-bottom: 0.35em;
-            border-bottom: 1px solid #e2e8f0; /* brand-border */
+            border-bottom: 1px solid #e5e7eb; /* brand-border */
         }
         .prose-custom h3 {
-            color: #0f172a; /* slate-900 */
+            color: #1f2937; /* gray-800 */
             font-weight: 700;
             margin-top: 1.5em;
         }
@@ -132,31 +130,33 @@
         .prose-custom ol {
             line-height: 1.75;
             margin-bottom: 1.25em;
-            color: #475569; /* brand-text-dim */
+            color: #4b5563; /* brand-text-dim */
         }
         .prose-custom li {
             margin-bottom: 0.5em;
         }
         .prose-custom strong {
-            color: #0f172a; /* slate-900 */
+            color: #111827; /* brand-text */
         }
         .prose-custom a {
-            color: #4f46e5; /* brand-accent */
+            color: #4f46e5; /* brand-primary */
             transition: all 0.2s;
         }
         .prose-custom a:hover {
-            color: #4338ca; /* brand-accent-dark */
+            color: #4338ca; /* brand-primary-dark */
             text-decoration: underline;
         }
         
-        /* Styling Gambar - Light Mode */
-        .header-image, .inline-image {
+        /* Styling Gambar - Dipertahankan */
+        .inline-image {
             border-radius: 0.5rem; /* 8px */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb; /* brand-border */
             overflow: hidden;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        /* Styling Catatan Investigasi (Kuning) - Light Mode */
+        /* Styling Catatan Investigasi (Kuning) - Dipertahankan */
         .investigation-note {
             background-color: #fefce8; /* yellow-50 */
             border-left: 4px solid #facc15; /* yellow-400 */
@@ -165,7 +165,6 @@
             border-radius: 0 0.5rem 0.5rem 0;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(250, 204, 21, 0.1); /* Shadow halus kuning */
         }
         .investigation-note h4 {
             font-weight: 700;
@@ -178,77 +177,65 @@
             line-height: 1.6;
         }
         
-        /* Styling Tab Interaktif - Light Mode */
+        /* Styling Tab Interaktif - Dipertahankan & disesuaikan */
         .tab-button {
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
-            color: #475569; /* brand-text-dim */
+            color: #4b5563; /* brand-text-dim */
         }
         .tab-button.active {
-            color: #4f46e5; /* brand-accent */
-            border-bottom-color: #4f46e5; /* brand-accent */
+            color: #4f46e5; /* brand-primary */
+            border-bottom-color: #4f46e5; /* brand-primary */
             font-weight: 600;
-            background-color: #f8fafc; /* brand-bg */
         }
         .tab-button:not(.active):hover {
-            background-color: #f1f5f9; /* slate-100 */
-            color: #1e293b; /* brand-text */
+            background-color: #f9fafb; /* gray-50 */
+            color: #111827; /* brand-text */
         }
         
-        /* Styling Tabel - Light Mode */
+        /* Styling Tabel - Dipertahankan & disesuaikan */
         .table-custom th {
-            background-color: #f1f5f9; /* slate-100 */
-            color: #1e293b; /* brand-text */
+            background-color: #f9fafb; /* gray-50 */
+            color: #111827; /* brand-text */
             font-weight: 600;
         }
         .table-custom tr:nth-child(even) {
             background-color: #ffffff; /* brand-surface */
         }
         .table-custom tr:nth-child(odd) {
-            background-color: #f8fafc; /* brand-bg */
+            background-color: #f7faff; /* brand-bg */
         }
         .table-custom td {
-            color: #475569; /* brand-text-dim */
+            color: #4b5563; /* brand-text-dim */
         }
         .table-custom tr td:first-child {
-            color: #334155; /* slate-700 */
+            color: #374151; /* gray-700 */
             font-weight: 500;
         }
 
-        /* Animasi untuk observer (Tetap sama) */
-        .content-card {
+        /* Animasi untuk observer (Dipertahankan) */
+        .content-section {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .content-card.is-visible {
+        .content-section.is-visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Shadow untuk teks Hero (Tetap sama) */
-        .hero-text-shadow {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .hero-subtext-shadow {
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
         }
 
     </style>
     
     <!-- Script Proteksi Konten (Sesuai Permintaan) -->
     <script>
-        // Mencegah klik kanan
         document.addEventListener('contextmenu', event => event.preventDefault());
-        
-        // Mencegah shortcut DevTools, View Source, dan Save
         document.addEventListener('keydown', event => {
             if (
                 event.key === 'F12' ||
                 (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
-                (event.metaKey && event.altKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) || // Untuk Mac
+                (event.metaKey && event.altKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
                 (event.ctrlKey && (event.key === 'U' || event.key === 'u' || event.key === 'S' || event.key === 's')) ||
-                (event.metaKey && (event.key === 'U' || event.key === 'u' || event.key === 'S' || event.key === 's')) // Untuk Mac
+                (event.metaKey && (event.key === 'U' || event.key === 'u' || event.key === 'S' || event.key === 's'))
             ) {
                 event.preventDefault();
             }
@@ -259,23 +246,22 @@
 <body ondragstart="return false;" ondrop="return false;">
 
     <!-- 
-      MODIFIKASI: NAVIGASI ATAS (HANYA UNTUK MOBILE)
-      - Navigasi ini sekarang disembunyikan di desktop (lg:hidden)
-      - Ini akan menjadi navigasi utama di perangkat seluler.
+      HEADER BARU: Sticky Top
+      Hanya berisi judul (Desktop) dan tombol menu (Mobile).
     -->
-    <nav class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-lg border-b border-slate-200 shadow-md lg:hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+    <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-lg border-b border-brand-border shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
                 <!-- Logo / Judul Kiri -->
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition-all">
-                        Studi Kasus: DSI
+                    <a href="#" class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-600 hover:from-brand-primary-dark hover:to-blue-700 transition-all">
+                        Studi Kasus: Dana Syariah Indonesia
                     </a>
                 </div>
                 
                 <!-- Tombol Menu Mobile -->
-                <div class="-mr-2 flex">
-                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-indigo-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-brand-text-dim hover:text-brand-primary hover:bg-brand-primary-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Buka menu</span>
                         <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -287,118 +273,100 @@
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Menu Mobile (Dropdown) - Light Mode -->
-        <div class="hidden" id="mobile-menu">
-            <div id="nav-links-mobile" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#hook" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium active">Pembuka</a>
-                <a href="#relevansi" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Relevansi</a>
-                <a href="#penjelasan" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Membongkar</a>
-                <a href="#investigasi" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Investigasi</a>
-                <a href="#kronologi-kolaps" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Kronologi</a>
-                <a href="#refleksi-final" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Refleksi</a>
-            </div>
-        </div>
-    </nav>
-    
-
-    <!-- MODIFIKASI: Tata Letak Utama (Flexbox untuk Desktop) -->
-    <div class="lg:flex">
-
-        <!-- 
-          MODIFIKASI: SIDEBAR NAVIGASI BARU (HANYA DESKTOP)
-          - Ini adalah sidebar vertikal yang sticky di kiri.
-          - 'hidden lg:flex' artinya tersembunyi di mobile, tampil sebagai flex di desktop.
-        -->
-        <nav class="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:border-r lg:border-brand-border lg:bg-brand-surface lg:pt-5 lg:pb-4">
-            <div class="flex flex-col flex-grow px-4">
-                <!-- Logo / Judul Sidebar -->
-                <div class="flex-shrink-0 flex items-center px-4 h-16">
-                    <a href="#" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
-                        Studi Kasus: DSI
-                    </a>
-                </div>
-                
-                <!-- Navigasi Desktop (Vertikal) -->
-                <div class="mt-6 flex-1 flex flex-col overflow-y-auto">
-                    <div id="nav-links-desktop-sidebar" class="flex flex-col space-y-2">
-                        <a href="#hook" class="sidebar-nav-link active">Pembuka</a>
-                        <a href="#relevansi" class="sidebar-nav-link">Relevansi</a>
-                        <a href="#penjelasan" class="sidebar-nav-link">Membongkar</a>
-                        <a href="#investigasi" class="sidebar-nav-link">Investigasi</a>
-                        <a href="#kronologi-kolaps" class="sidebar-nav-link">Kronologi</a>
-                        <a href="#refleksi-final" class="sidebar-nav-link">Refleksi</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Menu Mobile (Dropdown) -->
+    <div class="md:hidden hidden border-b border-brand-border bg-white shadow-lg" id="mobile-menu">
+        <nav id="nav-links-mobile" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <!-- Tautan akan diisi oleh JS, tapi kita bisa letakkan di sini juga -->
+            <a href="#hook" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Pembuka</a>
+            <a href="#relevansi" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Relevansi</a>
+            <a href="#penjelasan" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Membongkar Mesin</a>
+            <a href="#investigasi" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Investigasi Lapangan</a>
+            <a href="#kronologi-kolaps" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Kronologi Keruntuhan</a>
+            <a href="#refleksi-final" class="sidebar-nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-brand-text-dim hover:bg-gray-50 hover:text-brand-text">Refleksi Final</a>
         </nav>
-
-        <!-- 
-          MODIFIKASI: Konten Utama
-          - 'lg:pl-64' memberi ruang untuk sidebar kiri yang fixed.
-          - 'flex-1' membuatnya mengisi sisa ruang.
-        -->
-        <div id="main-content" class="lg:pl-64 flex flex-col flex-1">
+    </div>
+    
+    <!-- 
+      LAYOUT UTAMA BARU: [ Navigasi Kiri (Sticky) ] [ Konten Kanan (Scroll) ]
+    -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="md:grid md:grid-cols-12 md:gap-x-12 lg:gap-x-16">
             
             <!-- 
-              HERO SECTION BARU - Light Mode
-              Ini sekarang berada di dalam kolom konten utama.
+              KOLOM KIRI: Navigasi Sticky (Hanya Desktop)
             -->
-            <header class="relative overflow-hidden h-[80vh] min-h-[500px] flex items-center justify-center text-center">
-                <!-- Gambar Background -->
-                <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG9Tby1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80" 
-                         alt="Model rumah di atas cetak biru dan kalkulator" 
-                         class="w-full h-full object-cover header-image"
-                         onerror="this.src='https://placehold.co/1740x800/f8fafc/475569?text=Gagal+Memuat+Gambar'">
-                    <!-- Overlay Gradien Terang -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-brand-bg/20 via-brand-bg/80 to-brand-bg"></div>
-                </div>
-                
-                <!-- Teks Hero -->
-                <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-text hero-text-shadow">
-                        Aman, Syariah, Untung 18%...
-                        <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 mt-2 md:mt-4">
-                            Sampai Semuanya Runtuh.
-                        </span>
-                    </h1>
-                    <p class="mt-8 text-lg md:text-xl max-w-3xl mx-auto text-brand-text-dim font-medium animate-slide-up hero-subtext-shadow" style="animation-delay: 0.2s;">
-                        Ini adalah kisah nyata tentang mimpi investasi yang berubah getir. Sebuah perjalanan reflektif agar kita lebih bijak melihat apa yang berkilau di layar ponsel kita.
-                    </p>
-                    
-                    <!-- FITUR BARU: Estimasi Waktu Baca -->
-                    <div class="mt-8 flex items-center justify-center gap-x-3 text-brand-text-dim animate-slide-up" style="animation-delay: 0.3s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
-                        </svg>
-                        <span class="text-sm font-medium">Est. Waktu Baca: 9 Menit</span>
-                    </div>
-                    
-                    <div class="mt-8 animate-slide-up" style="animation-delay: 0.4s;">
-                        <a href="#hook" class="inline-block bg-brand-accent hover:bg-brand-accent-dark text-white font-bold text-lg px-8 py-4 rounded-full shadow-accent-glow hover:shadow-accent-glow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            Mulai Investigasi
-                        </a>
-                    </div>
-                </div>
-            </header>
+            <aside class="hidden md:block md:col-span-3 lg:col-span-3">
+                <nav id="nav-links-desktop" class="sticky top-24 space-y-2">
+                    <h3 class="px-3 text-sm font-semibold text-gray-500 uppercase tracking-wider">Daftar Isi</h3>
+                    <a href="#hook" class="sidebar-nav-link active">Pembuka</a>
+                    <a href="#relevansi" class="sidebar-nav-link">Relevansi</a>
+                    <a href="#penjelasan" class="sidebar-nav-link">Membongkar Mesin</a>
+                    <a href="#investigasi" class="sidebar-nav-link">Investigasi Lapangan</a>
+                    <a href="#kronologi-kolaps" class="sidebar-nav-link">Kronologi Keruntuhan</a>
+                    <a href="#refleksi-final" class="sidebar-nav-link">Refleksi Final</a>
+                </nav>
+            </aside>
 
-            <!-- Layout Konten Utama (Single Column, Centered) -->
-            <main class="max-w-3xl mx-auto p-4 md:p-8 space-y-12 md:space-16 mt-16">
+            <!-- 
+              KOLOM KANAN: Konten Utama (Scrollable)
+            -->
+            <main id="main-content" class="md:col-span-9 lg:col-span-9 space-y-12 md:space-y-16">
                 
-                <!-- Kartu Perkenalan -->
-                <section class="content-card p-6 md:p-8 text-center" style="animation-delay: 0.2s;">
-                    <h2 class="text-2xl font-bold text-brand-accent mb-4">Selamat Datang di Ruang Bedah Kasus Ini!</h2>
-                    <p class="text-base md:text-lg text-brand-text-dim">
-                        Sahabat, mari kita mulai sebuah perjalanan investigatif. Kita akan mengupas apa yang sebenarnya terjadi di balik layar PT Dana Syariah Indonesia (DSI). Ini bukan sekadar laporan formal, tapi sebuah cerita tentang inovasi, harapan, dan pelajaran mahal saat segalanya tak berjalan sesuai rencana.
-                    </p>
+                <!-- 
+                  HERO SECTION BARU:
+                  Terintegrasi di dalam kolom konten.
+                -->
+                <section class="content-card p-6 md:p-10 animate-fade-in">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:gap-x-8">
+                        <!-- Gambar Hero Baru -->
+                        <div class="flex-shrink-0 w-full lg:w-1/3 mb-6 lg:mb-0">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80" 
+                                 alt="Kalkulator, dokumen keuangan, dan pena di atas meja" 
+                                 class="w-full h-auto object-cover rounded-lg shadow-md"
+                                 onerror="this.src='https://placehold.co/600x400/eef2ff/4b5563?text=Analisis+Finansial'">
+                        </div>
+                        <!-- Teks Hero -->
+                        <div class="flex-1">
+                            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-brand-text">
+                                Aman, Syariah, Untung 18%...
+                                <span class="block bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-600 mt-2">
+                                    Sampai Semuanya Runtuh.
+                                </span>
+                            </h1>
+                            <p class="mt-6 text-lg md:text-xl max-w-3xl text-brand-text-dim font-medium">
+                                Ini adalah kisah nyata tentang mimpi investasi yang berubah getir. Sebuah perjalanan reflektif agar kita lebih bijak melihat apa yang berkilau di layar ponsel kita.
+                            </p>
+                            <!-- Estimasi Waktu Baca -->
+                            <div class="mt-6 flex items-center gap-x-3 text-brand-text-dim">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
+                                </svg>
+                                <span class="text-sm font-medium">Est. Waktu Baca: 9 Menit</span>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+                
+                <!-- 
+                  Konten di-render di sini.
+                  Setiap <section> menjadi "content-section" untuk di-observe.
+                -->
 
                 <!-- Bagian 1: Pembuka -->
-                <section id="hook" class="content-card p-6 md:p-8 prose prose-custom max-w-none">
+                <section id="hook" class="content-section content-card p-6 md:p-8 prose prose-custom max-w-none">
                     <h2>Kisah Ini Dimulai dari Janji Manis...</h2>
                     <p>Coba kita bayangkan sejenak. Anda menemukan sebuah aplikasi fintech di ponsel Anda. Tampilannya bersih, profesional, dan yang paling penting, legal. Ini bukan aplikasi pinjol 'abal-abal' yang bersembunyi di kegelapan; platform ini, PT Dana Syariah Indonesia (DSI), dengan bangga memajang izin penuh dari Otoritas Jasa Keuangan (OJK).</p>
                     <p>Lebih dari itu, ada stempel "syariah". Artinya, operasinya diawasi oleh Dewan Pengawas Syariah (DPS) yang direkomendasikan langsung oleh Majelis Ulama Indonesia (MUI). Bagi kebanyakan dari kita, dua logo ini—OJK dan DSN-MUI—adalah jaminan rasa aman paling puncak.</p>
+                    
+                    <!-- Gambar Pendukung Baru -->
+                    <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80"
+                         alt="Tampilan aplikasi investasi di ponsel"
+                         class="w-full h-auto max-h-[400px] object-cover my-6 inline-image"
+                         loading="lazy"
+                         onerror="this.src='https://placehold.co/1740x400/ffffff/4b5563?text=Aplikasi+Fintech'">
+                    
                     <p>Lalu, Anda melihat penawarannya: mendanai proyek-proyek properti. Imbal hasilnya begitu memikat, setara "Hingga 18%" per tahun. Dan inilah bagian terbaiknya: untuk produk dengan imbal hasil setinggi itu, DSI berani menulis: "Pembiayaan ini aman".</p>
                     <p>Legal, syariah, untung tinggi, dan aman. Kedengarannya seperti mimpi yang jadi kenyataan, bukan?</p>
                     <h3 class="text-3xl font-bold text-center text-brand-text my-8 italic">Tepat. Terlalu sempurna.</h3>
@@ -408,23 +376,16 @@
                 </section>
 
                 <!-- Bagian 2: Relevansi -->
-                <section id="relevansi" class="content-card p-6 md:p-8 prose prose-custom max-w-none">
+                <section id="relevansi" class="content-section content-card p-6 md:p-8 prose prose-custom max-w-none">
                     <h2>Mengapa Kisah Ini Penting Bagi Kita?</h2>
-                    
-                    <img src="https://images.unsplash.com/photo-1601597111158-2f961f3fb0f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80"
-                         alt="Seseorang memegang ponsel yang menampilkan aplikasi keuangan"
-                         class="w-full h-auto object-cover my-6 inline-image"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/1740x400/ffffff/475569?text=Relevansi+Fintech'">
-
                     <p>Kita hidup di zaman serba aplikasi. Setiap hari, kita didorong untuk "melek finansial", mengambil alih kendali keuangan kita, dan berinvestasi lewat gawai yang menjanjikan kemudahan dan keuntungan. Kita tidak lagi pasif menabung di bank; kita diajak aktif "mendanai" dan "berinvestasi".</p>
                     <p>Kisah DSI bukan sekadar berita gagal bayar biasa. Ini adalah cermin besar bagi kita semua. Sebuah studi kasus nyata tentang apa yang terjadi ketika transparansi kalah cepat dari inovasi.</p>
                     <p>Bagi kita, kisah ini sangat relevan. Ini adalah ujian terbesar bagi seluruh ekosistem fintech syariah di Indonesia. Musibah ini memaksa kita merenung dan bertanya: Apakah label "syariah" yang kita percayai benar-benar memberikan lapisan perlindungan ekstra? Ataukah itu hanya 'pemanis' pemasaran yang membuat kita lengah terhadap risiko yang sebenarnya?</p>
                     <p>Saat Anda menaruh dana di platform Peer-to-Peer (P2P) lending, siapa yang sebenarnya menanggung risiko jika terjadi gagal bayar? Jawabannya: itu bukan platformnya. Itu adalah Anda, sang pemberi dana.</p>
                 </section>
 
-                <!-- Bagian 3: INTERAKTIF BARU (Tabs) - Light Mode -->
-                <section id="penjelasan" class="content-card overflow-hidden p-6 md:p-8">
+                <!-- Bagian 3: INTERAKTIF (Tabs) -->
+                <section id="penjelasan" class="content-section content-card overflow-hidden p-6 md:p-8">
                     <div class="prose prose-custom max-w-none">
                         <h2>Membongkar Mesin di Balik DSI</h2>
                         <p>Untuk mengerti mengapa 'kapal' ini bisa karam, kita perlu membedah mesinnya satu per satu. Kita akan melihat tiga hal: pondasi hukumnya (akad), cara kerjanya (model bisnis), dan cara 'jualannya' (pemasaran).</p>
@@ -451,9 +412,9 @@
                         <div id="content-akad" class="tab-content prose prose-custom max-w-none animate-fade-in">
                             <img src="https://images.unsplash.com/photo-1576764402682-6453ae4e4f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80"
                                  alt="Tanda tangan di atas dokumen kontrak"
-                                 class="w-full h-auto object-cover my-6 inline-image"
+                                 class="w-full h-auto object-cover inline-image"
                                  loading="lazy"
-                                 onerror="this.src='https://placehold.co/1740x400/ffffff/475569?text=Analisis+Akad'">
+                                 onerror="this.src='https://placehold.co/1740x400/ffffff/4b5563?text=Analisis+Akad'">
                             
                             <h3>3.1: Permainan Dua Akad: Anda "Menyewa Mandor"</h3>
                             <p>Lapisan pertama adalah hukum. Saat Anda menaruh uang di DSI, Anda tidak sedang "menabung" atau "mendepositokan" uang. Hubungan Anda dengan DSI diikat oleh perjanjian legal bernama "PERJANJIAN WAKALAH BIL UJRAH".</p>
@@ -466,7 +427,7 @@
                             <p><strong>Contoh:</strong> Developer butuh semen dan baja senilai Rp 1 miliar. DSI (Mandor Anda), bertindak atas nama Anda, 'membeli' semen dan baja itu, lalu 'menjualnya' kembali ke Developer dengan harga Rp 1,2 miliar, yang dibayar cicil 12 bulan. Kelebihan Rp 200 juta itulah yang menjadi "imbal hasil" Anda.</p>
                             
                             <!-- Penambahan Sesuai Permintaan -->
-                            <p class="text-sm italic text-slate-500 mt-4">Penting untuk dipahami, model transaksi Murabahah yang dijelaskan ini adalah asumsi logis berdasarkan dokumen yang ada. Praktik implementasi di lapangan tentunya memerlukan verifikasi dan validasi data lebih lanjut untuk mendapat gambaran utuh.</p>
+                            <p class="text-sm italic text-gray-500 mt-4">Penting untuk dipahami, model transaksi Murabahah yang dijelaskan ini adalah asumsi logis berdasarkan dokumen yang ada. Praktik implementasi di lapangan tentunya memerlukan verifikasi dan validasi data lebih lanjut untuk mendapat gambaran utuh.</p>
                             <!-- Akhir Penambahan -->
 
                             <h3 class="text-red-600">Titik Lemah yang Fatal</h3>
@@ -511,16 +472,9 @@
                     </div>
                 </section>
 
-                <!-- Bagian 4: Investigasi -->
-                <section id="investigasi" class="content-card p-6 md:p-8 prose prose-custom max-w-none">
+                <!-- Bagian 4: Catatan Investigasi -->
+                <section id="investigasi" class="content-section content-card p-6 md:p-8 prose prose-custom max-w-none">
                     <h2>Menyusuri Jejak di Lapangan (Studi Kasus RMD)</h2>
-                    
-                    <img src="https://images.unsplash.com/photo-1511091131062-ea48b79b6366?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%D%D&auto=format&fit=crop&w=1740&q=80"
-                         alt="Lokasi konstruksi perumahan baru"
-                         class="w-full h-auto object-cover my-6 inline-image"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/1740x400/ffffff/475569?text=Studi+Lapangan'">
-                    
                     <p>Analisis tadi adalah teori di atas kertas. Sekarang, mari kita lihat apa yang terjadi 'di lumpur', di lapangan. Kita akan menelaah sebuah "catatan kunjungan" ke salah satu mitra developer DSI di Makassar, sebut saja PT. RMD.</p>
                     <p>Apa yang ditemukan di sana memberikan gambaran yang jauh lebih jelas (dan mengkhawatirkan) tentang bagaimana teori 'rapuh' itu dipraktikkan.</p>
 
@@ -556,7 +510,7 @@
                 </section>
 
                 <!-- Bagian 5: Kronologi -->
-                <section id="kronologi-kolaps" class="content-card p-6 md:p-8">
+                <section id="kronologi-kolaps" class="content-section content-card p-6 md:p-8">
                     <div class="prose prose-custom max-w-none">
                         <h2>Detik-Detik Keruntuhan dalam 4 Bulan</h2>
                         <p>Bagaimana tumpukan 'kartu' ini akhirnya runtuh di dunia nyata? Krisis ini tidak terjadi dalam semalam. Itu adalah api kecil yang dibiarkan membesar hingga tak terkendali.</p>
@@ -566,9 +520,9 @@
                          alt="Efek domino yang jatuh, simbol krisis finansial"
                          class="w-full h-auto object-cover my-6 inline-image"
                          loading="lazy"
-                         onerror="this.src='https://placehold.co/1740x400/ffffff/475569?text=Sistem+yang+Rapuh'">
+                         onerror="this.src='https://placehold.co/1740x400/ffffff/4b5563?text=Sistem+yang+Rapuh'">
                     
-                    <!-- Timeline/Kronologi Baru - Light Mode -->
+                    <!-- Timeline/Kronologi - Disesuaikan dengan palet baru -->
                     <div class="mt-8 flow-root">
                         <ul class="-mb-8">
                             <!-- Fase 1 -->
@@ -675,7 +629,7 @@
                 </section>
 
                 <!-- Bagian 6: Refleksi -->
-                <section id="refleksi-final" class="content-card p-6 md:p-8">
+                <section id="refleksi-final" class="content-section content-card p-6 md:p-8">
                     <div class="prose prose-custom max-w-none">
                         <h2>Pelajaran Mahal tentang "Amanah"</h2>
                         
@@ -683,7 +637,7 @@
                              alt="Orang yang merencanakan keuangan di depan komputer"
                              class="w-full h-auto object-cover my-6 inline-image"
                              loading="lazy"
-                             onerror="this.src='https://placehold.co/1740x400/ffffff/475569?text=Refleksi+Bersama'">
+                             onerror="this.src='https://placehold.co/1740x400/ffffff/4b5563?text=Refleksi+Bersama'">
 
                         <p>Keruntuhan Dana Syariah Indonesia bukanlah sebuah 'kecelakaan' tunggal. Ia adalah hasil yang tak terhindarkan dari perpaduan tiga elemen yang rapuh:</p>
                         <ol class="list-decimal pl-5">
@@ -697,8 +651,8 @@
                         <p>DPS kemungkinan besar telah memastikan semua dokumen akad sah di atas kertas. Tetapi mereka tampaknya gagal dalam mengawasi praktik bisnis dan etika operasional perusahaan.</p>
                         <p>Label "syariah" akhirnya hanya berfungsi sebagai stempel, menciptakan "rasa aman palsu" yang membuat investor lengah, padahal praktik bisnisnya sama berbahayanya (atau bahkan lebih) dari fintech konvensional.</p>
                         
-                        <!-- Kotak Refleksi Final (Biru) - Light Mode -->
-                        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-900 p-6 rounded-r-lg my-6 not-prose shadow-lg shadow-blue-500/10">
+                        <!-- Kotak Refleksi Final (Biru) - Disesuaikan palet baru -->
+                        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-900 p-6 rounded-r-lg my-6 not-prose">
                             <h4 class="font-bold text-lg mb-2 text-blue-800">Pelajaran Berharga Untuk Kita Semua</h4>
                             <p class="text-blue-700">Bagi kita yang hidup di era digital ini, pelajaran dari DSI sangat jelas: <strong>"Izin OJK" dan "Label Syariah" adalah titik awal, bukan garis akhir</strong> dari kewaspadaan kita.</p>
                             <p class="mt-3 text-blue-700">Label "syariah" seharusnya berarti lebih dari sekadar akad bebas bunga. Ia harus berarti transparansi radikal, etika yang lebih tinggi, dan amanah yang sesungguhnya. Krisis ini adalah 'alarm' bagi industri dan regulator untuk membuktikan bahwa "amanah" bukan sekadar kata dalam kontrak, tapi sebuah aksi nyata.</p>
@@ -708,10 +662,9 @@
                 </section>
                 
                 <!-- Footer -->
-                <footer class="mt-16 pb-16 text-center text-brand-text-dim text-sm space-y-4">
-                    <!-- Konten footer diganti sesuai permintaan -->
+                <footer class="mt-16 pb-8 text-center text-brand-text-dim text-sm space-y-4">
                     <div class="pt-6 border-t border-brand-border">
-                         <p class="font-semibold text-slate-500">
+                         <p class="font-semibold text-gray-500">
                             <strong>Disclaimer:</strong> artikel ini ditulis berdasarkan hasil riset subyektif penulis semata untuk tujuan edukasi dan refleksi. Tidak dimaksudkan sebagai artikel yang setara dengan Karya Ilmiah Akademik ataupun Artikel Publisitas Jurnalistik-Investigatif.
                         </p>
                     </div>
@@ -725,7 +678,7 @@
       Menangani:
       1. Menu Mobile
       2. Sistem Tab Interaktif
-      3. Scroll-spy untuk Navigasi Atas (Mobile) DAN Sidebar (Desktop)
+      3. Scroll-spy untuk Navigasi (Desktop Kiri & Mobile Atas)
       4. Animasi 'fade-in' saat elemen masuk viewport
     -->
     <script>
@@ -736,33 +689,29 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const iconOpen = document.getElementById('icon-open');
             const iconClose = document.getElementById('icon-close');
-            // Navigasi mobile sekarang dipilih dari ID yang benar
             const mobileNavLinks = document.querySelectorAll('#nav-links-mobile a');
 
             const toggleMenu = () => {
-                mobileMenu.classList.toggle('hidden');
-                iconOpen.classList.toggle('block');
-                iconOpen.classList.toggle('hidden');
-                iconClose.classList.toggle('hidden');
-                iconClose.classList.toggle('block');
-                const isExpanded = mobileMenu.classList.contains('hidden') ? 'false' : 'true';
-                menuButton.setAttribute('aria-expanded', isExpanded);
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                iconOpen.classList.toggle('block', isHidden);
+                iconOpen.classList.toggle('hidden', !isHidden);
+                iconClose.classList.toggle('hidden', isHidden);
+                iconClose.classList.toggle('block', !isHidden);
+                menuButton.setAttribute('aria-expanded', !isHidden);
             };
 
-            // Pastikan menuButton ada (karena disembunyikan di desktop)
-            if (menuButton) {
-                menuButton.addEventListener('click', toggleMenu);
-            }
+            menuButton.addEventListener('click', toggleMenu);
             
+            // Tutup menu saat link mobile diklik
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (menuButton && !mobileMenu.classList.contains('hidden')) {
+                    if (!mobileMenu.classList.contains('hidden')) {
                         toggleMenu();
                     }
                 });
             });
 
-            // --- 2. Logika Tab Interaktif ---
+            // --- 2. Logika Tab Interaktif (Dipertahankan) ---
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
 
@@ -774,110 +723,89 @@
                     tabContents.forEach(content => content.classList.add('hidden'));
                     
                     button.classList.add('active');
-                    document.getElementById(targetId).classList.remove('hidden');
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.remove('hidden');
+                    }
                 });
             });
 
-            // --- 3. Logika Scroll-spy ---
+            // --- 3. Logika Scroll-spy (Disesuaikan untuk 2 Nav) ---
             const sections = document.querySelectorAll('section[id]');
-            // Memilih link dari sidebar desktop BARU
-            const desktopNavLinks = document.querySelectorAll('#nav-links-desktop-sidebar a');
-            // Memilih link dari menu mobile (tetap sama)
-            const mobileNavLinksSpy = document.querySelectorAll('#nav-links-mobile a');
-
-            // Fungsi 'active' untuk sidebar desktop
-            const updateActiveLinkDesktop = (links) => {
-                let currentSectionId = '';
-                const scrollPosition = window.scrollY;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    // Offset 100px (80px nav + 20px buffer) - bisa disesuaikan
-                    if (scrollPosition >= sectionTop - 100) { 
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
-
-                links.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-
-                if (scrollPosition < sections[0].offsetTop - 100) {
-                    links.forEach(link => link.classList.remove('active'));
-                    if (links.length > 0) {
-                        const homeLink = Array.from(links).find(l => l.getAttribute('href') === '#hook');
-                        if (homeLink) homeLink.classList.add('active');
-                    }
-                }
-            };
+            const desktopNavLinks = document.querySelectorAll('#nav-links-desktop a');
+            const mobileNavLinksForSpy = document.querySelectorAll('.sidebar-nav-link-mobile'); // Gunakan selector yg benar
             
-            // Fungsi 'active' untuk nav mobile (style beda, tapi logikanya sama)
-            // Di masa depan, ini bisa digabung, tapi untuk kejelasan kita pisah
-            const updateActiveLinkMobile = (links) => {
+            // Definisikan class 'active' untuk mobile
+            const mobileActiveClass = 'bg-brand-primary-light text-brand-primary font-semibold';
+            const mobileInactiveClass = 'text-brand-text-dim';
+
+            // ***** PERBAIKAN DIMULAI DI SINI *****
+            const updateActiveLink = (links, activeClass, inactiveClass = '') => {
                 let currentSectionId = '';
                 const scrollPosition = window.scrollY;
+                
+                // Offset 100px (64px header + 36px buffer)
+                const offset = 100; 
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (scrollPosition >= sectionTop - 100) { 
+                    if (scrollPosition >= sectionTop - offset) { 
                         currentSectionId = section.getAttribute('id');
                     }
                 });
 
+                // Pisahkan string kelas menjadi array
+                const activeClasses = activeClass.split(' ');
+                const inactiveClasses = inactiveClass ? inactiveClass.split(' ') : [];
+
                 links.forEach(link => {
-                    link.classList.remove('active'); // Hapus style 'active' mobile
-                    link.classList.remove('font-semibold', 'text-indigo-600');
-                    link.classList.add('text-slate-600');
+                    // Gunakan spread operator (...) untuk menghapus/menambah semua kelas
+                    link.classList.remove(...activeClasses);
+                    if (inactiveClasses.length > 0) link.classList.add(...inactiveClasses);
 
                     if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active'); // Tambah style 'active' mobile
-                        link.classList.add('font-semibold', 'text-indigo-600');
-                        link.classList.remove('text-slate-600');
+                        link.classList.add(...activeClasses);
+                        if (inactiveClasses.length > 0) link.classList.remove(...inactiveClasses);
                     }
                 });
 
-                if (scrollPosition < sections[0].offsetTop - 100) {
-                    links.forEach(link => {
-                        link.classList.remove('active');
-                        link.classList.remove('font-semibold', 'text-indigo-600');
-                        link.classList.add('text-slate-600');
-                    });
-                    const homeLink = Array.from(links).find(l => l.getAttribute('href') === '#hook');
-                    if (homeLink) {
-                        homeLink.classList.add('active');
-                        homeLink.classList.add('font-semibold', 'text-indigo-600');
-                        homeLink.classList.remove('text-slate-600');
-                    }
+                // Kasus khusus untuk paling atas (jika hook belum tercapai)
+                if (currentSectionId === '' && links.length > 0) {
+                     const homeLink = Array.from(links).find(l => l.getAttribute('href') === '#hook');
+                     if (homeLink) {
+                        homeLink.classList.add(...activeClasses);
+                        if (inactiveClasses.length > 0) homeLink.classList.remove(...inactiveClasses);
+                     }
                 }
             };
-
+            // ***** PERBAIKAN SELESAI *****
             
             window.addEventListener('scroll', () => {
-                updateActiveLinkDesktop(desktopNavLinks);
-                updateActiveLinkMobile(mobileNavLinksSpy);
+                // Update Nav Desktop
+                updateActiveLink(desktopNavLinks, 'active'); 
+                // Update Nav Mobile
+                updateActiveLink(mobileNavLinksForSpy, mobileActiveClass, mobileInactiveClass);
             });
-            // Jalankan sekali saat memuat untuk status awal
-            updateActiveLinkDesktop(desktopNavLinks);
-            updateActiveLinkMobile(mobileNavLinksSpy);
+            
+            // Panggil sekali saat load
+            updateActiveLink(desktopNavLinks, 'active');
+            updateActiveLink(mobileNavLinksForSpy, mobileActiveClass, mobileInactiveClass);
 
 
-            // --- 4. Animasi 'Fade-in' saat Scroll ---
-            const cards = document.querySelectorAll('.content-card');
+            // --- 4. Animasi 'Fade-in' saat Scroll (Disesuaikan selector) ---
+            const observedSections = document.querySelectorAll('.content-section');
             
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // Sedikit lebih cepat terlihat
+                threshold: 0.1 
             };
 
             const observerCallback = (entries, observer) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
                         // Tambahkan delay berdasarkan urutan elemen
-                        entry.target.style.transitionDelay = `${index * 100}ms`;
+                        entry.target.style.transitionDelay = `${index * 50}ms`; // Delay lebih cepat
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -885,9 +813,17 @@
             };
 
             const observer = new IntersectionObserver(observerCallback, observerOptions);
-            cards.forEach(card => {
-                observer.observe(card);
+            observedSections.forEach(section => {
+                observer.observe(section);
             });
+            
+            // Amati juga hero section pertama
+            const heroSection = document.querySelector('.animate-fade-in');
+            if (heroSection) {
+                 setTimeout(() => {
+                     heroSection.style.opacity = 1;
+                 }, 100); // Fade-in hero sedikit setelah load
+            }
 
         });
     </script>
